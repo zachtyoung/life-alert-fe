@@ -9,7 +9,7 @@ function App() {
 
   const[occurances, setOccurances]=useState(null)
   useEffect(() => {
-    axios.get(`http://localhost:5000`)
+    axios.get(`https://life-altert-be.herokuapp.com/`)
     .then(res =>{
         setOccurances(res.data.data)
         console.log(res.data)
