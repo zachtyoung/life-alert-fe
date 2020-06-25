@@ -8,8 +8,13 @@ function App() {
 
 
   const[occurances, setOccurances]=useState(null)
+
   useEffect(() => {
-    axios.get(`https://life-altert-be.herokuapp.com/`)
+    const headers = {
+      'Content-Type': 'text/plain',
+      "Access-Control-Allow-Origin": "*"
+  };
+    axios.get(`https://life-altert-be.herokuapp.com`,{headers})
     .then(res =>{
         setOccurances(res.data.data)
         console.log(res.data)
@@ -28,7 +33,7 @@ function App() {
         // var localDate = new Date(el.time_triggered).toLocaleString('en-US');
         console.log(s)
         return (
-          <div>
+          <div className='wrapper'>
             <h1>{s}</h1>
           </div>
         )
