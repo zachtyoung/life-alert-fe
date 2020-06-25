@@ -33,7 +33,7 @@ function formatDate(date) {
     h = hh - 12;
     dd = "PM";
   }
-  if (h == 0) {
+  if (h === 0) {
     h = 12;
   }
   m = m < 10 ? "0" + m : m;
