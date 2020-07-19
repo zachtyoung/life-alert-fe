@@ -6,7 +6,7 @@ import './App.css';
 
 function App() {
   const dates ={}
-  const updates = []
+  const updates = [{date:"Date", amount:"Amount"}]
 
   const[occurances, setOccurances]=useState(null)
 
@@ -70,8 +70,8 @@ occurances && occurances.map(el =>{
 
 var i;
 for (i = 0; i < Object.keys(dates).length; i++) {
-  console.log(Object.entries(dates)[i])
-  updates.push(Object.entries(dates)[i])
+  // console.log(Object.entries(dates)[i])
+  updates.push({date: Object.keys(dates)[i], amount: Object.values(dates)[i]})
 
 }
 
@@ -79,7 +79,15 @@ for (i = 0; i < Object.keys(dates).length; i++) {
 
   return (
     <div className="App">
-      {updates.map(el => <h1 key={el[0]}>{el[0]}: {el[1]}</h1>)}
+      {updates.map(el =>{
+        return(
+          <div className='container'key={el.date}>
+            <h1 className='date'>{el.date}:</h1>
+            <h1 className='amount'>{el.amount}</h1>
+          </div>
+        )
+      })}
+  
     </div>
   );
 }
