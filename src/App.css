@@ -1,6 +1,21 @@
 .App {
   text-align: center;
 }
-.wrapper:last-of-type{
-  color: red;
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.container{
+
+}
+.date{
+  display: inline-block;
+  margin-bottom: 1rem;
+
+}
+.amount{
+  margin-left: 10px;
+  color: brown;
+  display: inline-block;
 }
