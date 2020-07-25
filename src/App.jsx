@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios'
 import moment from 'moment-timezone'
 import {
-  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
+  LineChart, AreaChart, Area, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
 } from 'recharts';
 
 import './App.css';
@@ -104,7 +104,7 @@ for (i = 0; i < Object.keys(dates).length; i++) {
         )
         
       })} */}
-       <LineChart
+       <AreaChart
                 width={width}
                 height={height}
                 data={updates}
@@ -114,11 +114,12 @@ for (i = 0; i < Object.keys(dates).length; i++) {
               >
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="date" />
-                <YAxis dateKey="date"/>
+                <YAxis dateKey="amount"/>
                 <Tooltip />
                 <Legend />
-                <Line type="monotone" dataKey="amount" stroke="#8884d8" activeDot={{ r: 8 }} />
-              </LineChart>
+                <Area type="monotone" dataKey="amount" stroke="#8884d8" fill="#8884d8" />
+                
+              </AreaChart>
     </div>
   );
 }
