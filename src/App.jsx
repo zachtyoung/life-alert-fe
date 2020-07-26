@@ -2,20 +2,11 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios'
 import moment from 'moment-timezone'
 import {
-  LineChart, AreaChart, Area, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
+  BarChart, Bar, Cell, LineChart, AreaChart, Area, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
 } from 'recharts';
 
 import './App.css';
 import useWindowDimensions from './window'
-// const data = [
-//   {name: 'Page A', uv: 4000, pv: 2400, amt: 2400},
-//   {name: 'Page B', uv: 3000, pv: 1398, amt: 2210},
-//   {name: 'Page C', uv: 2000, pv: 9800, amt: 2290},
-//   {name: 'Page D', uv: 2780, pv: 3908, amt: 2000},
-//   {name: 'Page E', uv: 1890, pv: 4800, amt: 2181},
-//   {name: 'Page F', uv: 2390, pv: 3800, amt: 2500},
-//   {name: 'Page G', uv: 3490, pv: 4300, amt: 2100},
-// ];
 function App() {
   const dates ={}
   const updates = []
@@ -86,7 +77,7 @@ occurances && occurances.map(el =>{
 var i;
 for (i = 0; i < Object.keys(dates).length; i++) {
   // console.log(Object.entries(dates)[i])
-  updates.push({date: Object.keys(dates)[i], amount: Object.values(dates)[i]})
+  updates.push({Date: Object.keys(dates)[i], Amount: Object.values(dates)[i]})
 
 }
 
@@ -104,12 +95,13 @@ for (i = 0; i < Object.keys(dates).length; i++) {
         )
         
       })} */}
-       <AreaChart
+
+       {/* <AreaChart
                 width={width}
                 height={height}
                 data={updates}
                 margin={{
-                  top: 5, right: 30, left: 20, bottom: 5,
+                  top: 30, right: 30, left: 0, bottom: 30,
                 }}
               >
                 <CartesianGrid strokeDasharray="3 3" />
@@ -119,7 +111,23 @@ for (i = 0; i < Object.keys(dates).length; i++) {
                 <Legend />
                 <Area type="monotone" dataKey="amount" stroke="#8884d8" fill="#8884d8" />
                 
-              </AreaChart>
+              </AreaChart> */}
+
+              <BarChart
+        width={width}
+        height={height}
+        data={updates}
+        margin={{
+          top: 30, right: 30, left: -10, bottom: 30,
+        }}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="Date" />
+        <YAxis dataKey="Amount"/>
+        <Tooltip />
+        <Legend />
+        <Bar dataKey="Amount" fill="#8884d8" />
+      </BarChart>
     </div>
   );
 }
